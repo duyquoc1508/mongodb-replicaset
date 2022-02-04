@@ -1,5 +1,5 @@
 # Replica set configuration manual
-version: "3.7"
+version: '3.5'
 
 services:
   mongo_one:
@@ -7,7 +7,7 @@ services:
     image: mongo #should specify version mongo here
     command: mongod --replSet my-mongo-set # join mongo1 vào replSet có tên my-mongo-set.
     ports:
-      - 37017:27017
+      - 27017:27017
   # mongo_two:
   #   container_name: mongo2
   #   image: mongo #should specify version mongo here

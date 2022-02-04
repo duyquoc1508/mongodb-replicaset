@@ -11,13 +11,11 @@ services:
       MONGO_REPLICA_SET_NAME: ${MONGO_REPLICA_SET_NAME}
     volumes:
       - ./.docker/mongodb/initdb.d/:/docker-entrypoint-initdb.d
-    expose:
-      - 37017
     ports:
-      - "37017:27017"
+      - '27017:27017'
     restart: always
     healthcheck:
       test: test $$(echo "rs.initiate().ok || rs.slaveOk().ok || rs.status().ok" | mongo --quiet) -eq 1
       interval: 10s
       start_period: 30s
-    entrypoint: [ "/usr/bin/mongod", "--bind_ip_all", "--replSet", "rs0" ]
+    entrypoint: ['/usr/bin/mongod', '--bind_ip_all', '--replSet', 'rs0']
